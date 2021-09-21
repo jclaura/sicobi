@@ -109,3 +109,10 @@ Route::get('/empresa', function () {
 Route::get('/clientes', function () {
     return view('clientes.clientes');
 })->name('clientes');
+
+/**************************************************************
+ ******        RUTA PARA EJECUTAR EN PRODUCCION          ******
+***************************************************************/
+Route::get('/linkstorage', function () {
+    Artisan::call('storage:link');
+});
