@@ -10,7 +10,7 @@ class PrincipalComponente extends Component
     public $nombre_empresa, $desc_empresa;
 
     public function mount(){    
-        $userId = auth()->user()->id;       
+        $userId = auth()->user()->id;              
         $empresa = Systemvar::get()->first();   
         $this->nombre_empresa = $empresa->nom_empresa_sys;   
         $this->desc_empresa = $empresa->desc_empresa_sys; 
