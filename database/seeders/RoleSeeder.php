@@ -18,9 +18,8 @@ class RoleSeeder extends Seeder
     public function run()
     {
         
-        $role1 = Role::create(['name' => 'Administrador']);
-        $role2 = Role::create(['name' => 'Supervisor']);
-        $role3 = Role::create(['name' => 'Vendedor']); 
+        $role1 = Role::create(['name' => 'Administrador']);        
+        $role2 = Role::create(['name' => 'Vendedor']); 
 
         //OPCIONES DE IMPORTACION
         $permission = Permission::create(['name' => 'proveedores'])->assignRole($role1);
@@ -30,18 +29,18 @@ class RoleSeeder extends Seeder
         $permission = Permission::create(['name' => 'giros'])->assignRole($role1);
 
         //OPCIONES DE INVENTARIO
-        $permission = Permission::create(['name' => 'depositos'])->assignRole([$role1, $role2]);
-        $permission = Permission::create(['name' => 'grupos'])->assignRole([$role1, $role2]);
-        $permission = Permission::create(['name' => 'tiendas'])->assignRole([$role1, $role2]);
-        $permission = Permission::create(['name' => 'categorias'])->assignRole([$role1, $role2]);
-        $permission = Permission::create(['name' => 'stock'])->assignRole([$role1, $role2]);
-        $permission = Permission::create(['name' => 'entradas'])->assignRole([$role1, $role2]);
-        $permission = Permission::create(['name' => 'salidas'])->assignRole([$role1, $role2]);
+        $permission = Permission::create(['name' => 'depositos'])->assignRole([$role1]);
+        $permission = Permission::create(['name' => 'grupos'])->assignRole([$role1]);
+        $permission = Permission::create(['name' => 'tiendas'])->assignRole([$role1]);
+        $permission = Permission::create(['name' => 'categorias'])->assignRole([$role1]);
+        $permission = Permission::create(['name' => 'stock'])->assignRole([$role1]);
+        $permission = Permission::create(['name' => 'entradas'])->assignRole([$role1]);
+        $permission = Permission::create(['name' => 'salidas'])->assignRole([$role1]);
         
         //OPCIONES DE VENTAS        
-        $permission = Permission::create(['name' => 'ventas'])->assignRole([$role1, $role3]);
-        $permission = Permission::create(['name' => 'reportes'])->assignRole([$role1, $role3]);
-        $permission = Permission::create(['name' => 'clientes'])->assignRole([$role1, $role3]);               
+        $permission = Permission::create(['name' => 'ventas'])->assignRole([$role1, $role2]);
+        $permission = Permission::create(['name' => 'reportes'])->assignRole([$role1, $role2]);
+        $permission = Permission::create(['name' => 'clientes'])->assignRole([$role1, $role2]);               
 
         //OPCIONES DE CONFIGURACIONB        
         $permission = Permission::create(['name' => 'usuarios'])->assignRole($role1);

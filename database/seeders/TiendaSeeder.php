@@ -31,5 +31,11 @@ class TiendaSeeder extends Seeder
         $registro->dir_tienda = 'Av. Villazón';
         $registro->ciudad_tienda = 'La Paz';
         $registro->save();  
+
+        $registro = new Tienda;
+        $registro->nom_tienda = 'ADMINISTRADOR';
+        $registro->dir_tienda = 'Sin datos';
+        $registro->ciudad_tienda = 'La Paz';
+        $registro->save();  
     }
 }

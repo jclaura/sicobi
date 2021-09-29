@@ -231,12 +231,7 @@ return [
             'topnav_right' => true,
         ],
 
-        // Sidebar items:        
-        [
-            'text' => 'blog',
-            'url'  => 'admin/blog',
-            'can'  => 'manage-blog',
-        ],        
+        // Sidebar items:                      
         [
             'text' => 'Inicio',
             'route'  => 'home',

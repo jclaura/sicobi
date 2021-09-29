@@ -18,15 +18,15 @@ class UserSeeder extends Seeder
     {
         User::create([
             'name' => 'Juan Carlos Laura',
-            'email' => 'jclauraa@gmail.com',            
-            'password' => bcrypt('442905jclaura'), 
+            'email' => 'jclauraa@gmail.com',                       
+            'password' => bcrypt('442905JcL$@!%^'), 
             'rol' => 'Administrador'           
         ])->assignRole('Administrador');
         
 
         Empleado::create([
             'user_id' => '1',                                          
-            'tienda_id' => '3',  
+            'tienda_id' => '4',  
             'ci_emp' => '442905',   
             'dir_emp'  => 'Av. Oscar Alfaro',
             'tel_emp' => '76257494',                                  
