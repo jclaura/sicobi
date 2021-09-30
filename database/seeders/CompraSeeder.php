@@ -16,9 +16,9 @@ class CompraSeeder extends Seeder
     public function run()
     {
         Compra::create([
-            'fecha_com' => '2021/07/14',
+            'fecha_com' => '2021/09/30',
             'tipo_com' => 6.35,                       
-            'items_com' => 22, 
+            'items_com' => 21, 
             'moneda_com' => 'Yuan',
             'pais_com' => 'China',   
             'comprador_com' => 'Juan Carlos Laura',  

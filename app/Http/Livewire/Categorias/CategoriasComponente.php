@@ -61,7 +61,7 @@ class CategoriasComponente extends Component
             ]);
             $this->emit('alert',['type'=>'success','message'=>'Registro guardado']);   
             $this->reset(['cat_desc','cat_cod']);  
-            $this->emit('HideCreateProveedorModal');
+            $this->emit('HideCreateCategoriaModal');
         } else {            
             $this->emit('msgError', 'Código ya existe!');
         }                    
