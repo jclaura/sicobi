@@ -21,6 +21,7 @@ class GiroSeeder extends Seeder
             'docs_giro'  => 25,
             'itf_giro' => 0,                      
             'extravio_giro' => 10,   
+            'tipo_giro' => 0,
         ]);        
     }     
 }

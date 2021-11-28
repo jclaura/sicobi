@@ -27,6 +27,8 @@ class GirosComponente extends Component
     public $docs_giro;//CAMPO  VALIDADO
     public $itf_giro;//CAMPO VALIDADO
     public $extravio_giro;//CAMPO VALIDADO
+    public $tipo_giro;
+
 
     //VARIABLES GLOBAL 
     public $ids;
@@ -53,7 +55,11 @@ class GirosComponente extends Component
     ];
 
     public function resetVar(){
-        $this->reset(['monto_giro', 'comision_giro', 'docs_giro', 'itf_giro', 'extravio_giro']);        
+        $this->reset(['monto_giro', 'comision_giro', 'docs_giro', 'itf_giro', 'extravio_giro']);    
+        $this->comision_giro = 2.05;     
+        $this->itf_giro = 0.3; 
+        $this->docs_giro = 0; 
+        $this->papeleo_giro = 0; 
     }    
 
     public function mount(){                                       
@@ -73,7 +79,7 @@ class GirosComponente extends Component
         ]);        
     }
 
-    public function store(){           
+    public function store(){             
         $this->validate();        
         Giro::create([
             'compra_id' => $this->compra->id,   
@@ -82,7 +88,8 @@ class GirosComponente extends Component
             'comision_giro' => $this->comision_giro,  
             'docs_giro'  => $this->docs_giro,                    
             'itf_giro' => $this->itf_giro,  
-            'extravio_giro'  => $this->extravio_giro 
+            'extravio_giro'  => $this->extravio_giro,
+            'tipo_giro'  => $this->tipo_giro 
         ]);
         $this->emit('alert',['type'=>'success','message'=>'Registro guardado']);
         $this->resetVar();  
@@ -137,6 +144,6 @@ class GirosComponente extends Component
         $compra->update([                                        
             'giros_com' => 1 //TRANSFERENCIAS FINALIZADO
         ]);
-        $this->filtrar(); 
+        $this->filtrar();   
     }
 }

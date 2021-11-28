@@ -124,6 +124,6 @@ class PagosComponente extends Component
         $compra->update([                                        
             'pagos_com' => 1 //PAGO FINALIZADO
         ]);
-        $this->filtrar(); 
+        $this->filtrar();   
     }
 }

@@ -16,7 +16,8 @@ class Giro extends Model
         'comision_giro',
         'docs_giro',        
         'itf_giro',
-        'extravio_giro'  
+        'extravio_giro',
+        'tipo_giro'  
     ]; 
 
     public function compra()

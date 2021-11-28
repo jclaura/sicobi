@@ -28,7 +28,7 @@ Livewire.on('confirmarPagos', () => {
   showCancelButton: true,
   confirmButtonColor: '#3085d6',
   cancelButtonColor: '#d33',
-  confirmButtonText: 'Si, finalizar!',
+  confirmButtonText: 'Si, finalizar!',  
   cancelButtonText: 'Cancelar'
 }).then((result) => {
   if (result.isConfirmed) {

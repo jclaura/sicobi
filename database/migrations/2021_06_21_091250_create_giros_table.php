@@ -21,9 +21,10 @@ class CreateGirosTable extends Migration
             $table->date('fecha_giro')->nullable();  
             $table->decimal('monto_giro', 8, 2)->nullable(); 
             $table->decimal('comision_giro', 8, 2)->nullable();
-            $table->decimal('docs_giro', 8, 2)->nullable();
+            $table->decimal('docs_giro', 8, 2)->nullable()->default(0);
             $table->decimal('itf_giro', 8, 2)->nullable();
-            $table->decimal('extravio_giro', 8, 2)->nullable();
+            $table->decimal('extravio_giro', 8, 2)->nullable()->default(0);            
+            $table->boolean('tipo_giro')->default(0); //COMISION EN PORCENTAJE (1. COMISION FIJO)      
 
             $table->foreign('compra_id')//RESTRICION DE COLUMNA
                 ->references('id')

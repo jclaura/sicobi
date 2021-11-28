@@ -49,9 +49,9 @@
               @if (!$compra->giros_com)
                 <label for="pagos">Transferencias:</label>
                 <select wire:model="giros_com" wire:change="$emit('confirmarGiros')" id="giros">
-                  <option value="volvo">En proceso</option>
-                  <option value="saab">Finalizado</option>              
-                </select>                                                                                                            
+                  <option value="0">En proceso</option>
+                  <option value="1">Finalizado</option>              
+                </select>                                                                                                             
               @endif                                                                                   
           </div>                                         
         </div>              
@@ -63,8 +63,11 @@
               <th>FECHA</th>              
               <th>MONTO</th>
               <th>COMISION</th>
+              <th>TOTAL COMISION</th>
+              <th>TIPO</th>
               <th>DOCS.</th>              
               <th>ITF</th>
+              <th>TOTAL ITF</th>
               <th>EXTRAVIO</th>              
               <th>SUBTOTAL</th>   
               <th>ACCIONES</th>
@@ -74,8 +77,10 @@
             @php                                 
               $totalGiro=0;                
               $totalComision=0;
+              $totalGeneralComision=0;
               $totalDocs=0;
               $totalItf=0;
+              $totalGeneralItf=0;
               $totalExtravio=0;
               $subTotal=0;
               $totalSubTotal=0;
@@ -86,18 +91,37 @@
                     <td>{{ date('d-m-Y', strtotime($item->fecha_giro)) }}</td>    
                                                   
                     <td>{{number_format($item->monto_giro, 2, ',', '.')}}</td>
+                    {{--ACUMULA TOTAL GIRO--}}
                     @php                      
                       $totalGiro=$totalGiro+$item->monto_giro;                  
-                    @endphp                       
-                    <td>{{number_format($item->comision_giro, 2, ',', '.')}}</td> 
-                    @php                      
-                        $totalComision=$totalComision+$item->comision_giro;                  
-                    @endphp                     
+                    @endphp                                      
+
+                    @if ($item->tipo_giro == 0){{--COMISION EN PORCENTAJE--}}
+                      <td>{{number_format($item->comision_giro, 2, ',', '.')}}</td>
+                      @php                                             
+                        $totalComision = (($item->monto_giro*$item->comision_giro)/100)+$item->docs_giro;   
+                        $totalGeneralComision=$totalGeneralComision+$totalComision;               
+                      @endphp  
+                      <td>{{number_format($totalComision, 2, ',', '.')}}</td> 
+                      <td class="text-center text-success"><i class="fas fa-percent"></i></td>                         
+                    @else
+                      @php                                             
+                        $totalComision = $item->comision_giro;   
+                        $totalGeneralComision=$totalGeneralComision+$totalComision;               
+                      @endphp 
+                      <td>{{number_format(0, 2, ',', '.')}}</td>
+                      <td>{{number_format($totalComision, 2, ',', '.')}}</td>
+                      <td class="text-center text-info"><i class="fas fa-dollar-sign"></i></td>                       
+                    @endif                      
+                    
                     <td>{{number_format($item->docs_giro, 2, ',', '.')}}</td>
                     @php                      
-                        $totalDocs=$totalDocs+$item->docs_giro;                  
+                        $totalDocs=$totalDocs+$item->docs_giro; 
+                        $totalItf=(($item->monto_giro+$totalComision)*$item->itf_giro)/100;   
+                        $totalGeneralItf=$totalGeneralItf+$totalItf;              
                     @endphp                      
                     <td>{{number_format($item->itf_giro, 2, ',', '.')}}</td> 
+                    <td>{{number_format($totalItf, 2, ',', '.')}}</td> 
                     @php                      
                         $totalItf=$totalItf+$item->itf_giro;                  
                     @endphp                     
@@ -107,7 +131,7 @@
                     @endphp  
 
                     @php    
-                        $totalComision = (($item->monto_giro*$item->comision_giro)/100)+$item->docs_giro;
+                        
                         $totalItf = (($item->monto_giro+$totalComision)*$item->itf_giro)/100;    
 
                         $subTotal = $item->monto_giro+$totalComision+$totalItf+$item->extravio_giro;                  
@@ -131,12 +155,14 @@
                 <td></td>              
                 <td><strong>TOTALES:</strong></td>              
                 <td><strong>{{number_format($totalGiro, 2, ',', '.')}}</strong></td>
-                <td><strong>{{number_format($totalComision, 2, ',', '.')}}</strong></td>
-                <td><strong>{{number_format($totalDocs, 2, ',', '.')}}</strong></td>               
-                <td><strong>{{number_format($totalItf, 2, ',', '.')}}</strong></td> 
-                <td><strong>{{number_format($totalExtravio, 2, ',', '.')}}</strong></td> 
-                <td><strong>{{number_format($totalSubTotal, 2, ',', '.')}}</strong></td> 
+                <td></td>
+                <td><strong>{{number_format($totalGeneralComision, 2, ',', '.')}}</strong></td>                               
                 <td></td> 
+                <td><strong>{{number_format($totalDocs, 2, ',', '.')}}</strong></td>
+                <td></td>
+                <td><strong>{{number_format($totalGeneralItf, 2, ',', '.')}}</strong></td> 
+                <td><strong>{{number_format($totalExtravio, 2, ',', '.')}}</strong></td>                                  
+                <td><strong>{{number_format($totalSubTotal, 2, ',', '.')}}</strong></td> 
               </tr>                                            
           </tbody>
         </table>    
