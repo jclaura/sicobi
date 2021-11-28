@@ -60,6 +60,7 @@ class GirosComponente extends Component
         $this->itf_giro = 0.3; 
         $this->docs_giro = 0; 
         $this->papeleo_giro = 0; 
+        $this->tipo_giro = 0; 
     }    
 
     public function mount(){                                       
