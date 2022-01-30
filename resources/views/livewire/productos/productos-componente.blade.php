@@ -109,7 +109,7 @@
                 <td>{{$item->um_prod}}</td>  
                 
                 <td>{{number_format($item->precio_prod, 2, ',', '.')}}</td>
-                <td>{{$item->precio_prod*$item->cant_prod}}</td> 
+                <td>{{number_format($item->precio_prod*$item->cant_prod, 2, ',', '.')}}</td>                 
                 @php
                   $sus= $item->precio_prod/$tipo_cambio;                   
                   $totalCompra=$totalCompra+($item->precio_prod*$item->cant_prod);

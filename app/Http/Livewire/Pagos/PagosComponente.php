@@ -92,9 +92,9 @@ class PagosComponente extends Component
         $this->emit('ShowEditPagoModal');  
     }
 
-    public function update(){                
+    public function update(){          
         $this->validate();         
-        if ($this->ids) {            
+        if ($this->ids) {        
             $pago =Pago::find($this->ids);            
             $pago->update([                
                 'fecha_pago' => $this->fecha_pago,                      
@@ -102,7 +102,7 @@ class PagosComponente extends Component
                 'desc_pago'  => $this->desc_pago,        
                 'nota_pago' => $this->nota_pago,               
             ]);            
-            $this->emit('alert',['type'=>'success','message'=>'Registro actualizado']);                    
+            $this->emit('alert',['type'=>'success','message'=>'Registro actualizado']);         
             $this->resetVar();
             $this->emit('HideEditPagoModal'); 
             $this->filtrar(); 

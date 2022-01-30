@@ -19,15 +19,15 @@ class Compra extends Model
         'giros_com'  
     ]; 
 
-    //RELACION DE UNO A MUCHOS TIENDA/PRODUCTOS
+    //RELACION DE UNO A MUCHOS COMPRA/PRODUCTOS
     public function productos(){
         return $this->hasMany('App\Models\Producto');
     }
-
+    //RELACION DE UNO A MUCHOS COMPRA/PAGOS
     public function pagos(){
         return $this->hasMany('App\Models\Pago');
     }
-
+    //RELACION DE UNO A MUCHOS COMPRA/GIROS
     public function giros(){
         return $this->hasMany('App\Models\Giro');
     }

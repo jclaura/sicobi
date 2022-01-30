@@ -85,8 +85,8 @@ class ProductosComponente extends Component
     protected $rules = [   
         'cod_prod'  => 'required|min:12|max:12|regex:/^[A-Z]{2}[-]{1}[A-Z]{2}[-]{1}[0-9]{2}[-]{1}[0-9]{3}$/',                       
         'desc_prod'  => 'required|min:5|max:100|regex:/^([0-9a-zA-ZñÑáéíóúÁÉÍÓÚ_-])+((\s*)+([0-9a-zA-ZñÑáéíóúÁÉÍÓÚ_-]*)*)+$/',          
-        'cant_prod'  => 'required|integer|min:1|max:1000000',
-        'medida_prod'  => 'required|min:3|max:10|regex:/^([0-9a-zA-ZñÑáéíóúÁÉÍÓÚ_-])+((\s*)+([0-9a-zA-ZñÑáéíóúÁÉÍÓÚ_-]*)*)+$/',                                
+        'cant_prod'  => 'required|integer|min:1|max:1000000',         
+        'medida_prod'  => 'required|min:3|max:10|regex:/^([0-9a-zA-ZñÑáéíóúÁÉÍÓÚ_-])+((\s*)+(\.[0-9a-zA-ZñÑáéíóúÁÉÍÓÚ_-]*)*)+$/',                                
         'color_prod'  => 'required|min:3|max:15|regex:/^([0-9a-zA-ZñÑáéíóúÁÉÍÓÚ_-])+((\s*)+([0-9a-zA-ZñÑáéíóúÁÉÍÓÚ_-]*)*)+$/',                                
         'precio_prod'  => 'required|numeric'
     ]; 
